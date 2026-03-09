@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fotocamera</title>
+  <style>
+    body { margin: 0; background: #000; display: flex;
+           justify-content: center; align-items: center;
+           height: 100vh; flex-direction: column; }
+    video { width: 100%; max-width: 480px; border-radius: 12px; }
+    button { margin-top: 16px; padding: 12px 24px;
+             font-size: 16px; border: none; border-radius: 8px;
+             background: #fff; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <video id="cam" autoplay playsinline></video>
+  <button onclick="switchCamera()">🔄 Cambia fotocamera</button>
+
+  <script>
+    let useFront = true; // true = frontale, false = posteriore
+
+    async function startCamera() {
+      const constraints = {
+        video: { facingMode: useFront ? "user" : "environment" }
+      };
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia(constraints);
+        document.getElementById("cam").srcObject = stream;
+      } catch (err) {
+        alert("Impossibile accedere alla fotocamera: " + err.message);
+      }
+    }
+
+    function switchCamera() {
+      useFront = !useFront;
+      // Ferma lo stream corrente
+      const video = document.getElementById("cam");
+      if (video.srcObject) {
+        video.srcObject.getTracks().forEach(t => t.stop());
+      }
+      startCamera();
+    }
+
+    startCamera(); // avvio automatico
+  </script>
+</body>
+</html>
