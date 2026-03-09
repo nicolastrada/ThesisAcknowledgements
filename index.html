@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-  <title>I Ringraziamenti</title>
+  <title>Ringraziamenti</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -166,7 +166,7 @@
       border: 1px solid #333;
     }
 
-    /* Input nascosto — capture="user" = fotocamera FRONTALE */
+    /* capture="user" per fotocamera frontale */
     #cameraInput { display: none; }
   </style>
 </head>
@@ -174,14 +174,14 @@
 
   <input type="file" id="cameraInput" accept="image/*" capture="user" />
 
-  <!-- Schermata iniziale: nessun riferimento alla fotocamera -->
+  <!-- Landing page -->
   <div id="home-screen">
     <div class="trophy">🏆</div>
-    <h1>I Ringraziamenti</h1>
-    <p>C'è qualcuno di speciale che voglio ringraziare.<br/>Scopri se sei tu.</p>
+    <h1>I Veri Ringraziamenti</h1>
+    <p>Se sei arrivato fin qui vuol dire che ci tieni proprio a leggere dei veri ringraziamenti...
 
     <button class="btn-main" onclick="openCamera()">
-      Clicca per vedere chi fa parte<br/>dei ringraziamenti
+      Clicca e guarda chi veramente ne fa parte
     </button>
   </div>
 
@@ -190,15 +190,15 @@
     <div class="polaroid">
       <img id="preview" alt="La tua foto" />
       <div class="polaroid-caption">
-        <div class="label">Un messaggio per te</div>
         <div class="message">La persona che ringrazio sei tu</div>
         <span class="heart">♥</span>
+        <div class="label">(No davvero grazie mille...)</div>
       </div>
     </div>
 
     <div class="actions">
-      <button class="btn btn-primary"   onclick="downloadPhoto()">⬇️ Salva la foto</button>
-      <button class="btn btn-secondary" onclick="retake()">🔄 Rifai la foto</button>
+      <!-- <button class="btn btn-primary"   onclick="downloadPhoto()">⬇️ Salva la foto</button> -->
+      <button class="btn btn-primary" onclick="retake()">🔄 Rifai la foto</button>
     </div>
   </div>
 
